@@ -1,0 +1,18 @@
+ .sumConvert{
+    height: 15px;
+    width: 40px;
+    margin: 5px;
+}
+h1{
+    text-align: center;
+}
+label{
+    height: 20px;
+    width: 140px;
+    margin: 5px;
+}
+select{
+    height: 20px;
+    width: 140px;
+    margin: 5px;
+}

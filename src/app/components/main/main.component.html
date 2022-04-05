@@ -1,0 +1,25 @@
+<div class="toolbar" role="banner">
+    <div class="Welcome"></div>
+   
+    <div class="card-container">
+        <a (click)="page='currency-converter'" class="card" target="_blank" rel="noopener">
+            <span>Currency Converter</span>
+        </a>
+        <a (click)="page='about'" class="card" target="_blank" rel="noopener">
+            <span>About</span>
+        </a>
+    </div>
+    <div class="Welcome"></div>
+</div>
+
+
+<div class="content" role="main">
+    
+    <div class="card-container" *ngIf="page=='currency-converter'">
+        <app-currency-converter> </app-currency-converter>
+    </div>
+    <div class="card-container" *ngIf="page=='about'">
+        <app-about></app-about>
+    </div>
+</div>
+<router-outlet></router-outlet>
