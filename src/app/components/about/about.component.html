@@ -1,3 +1,3 @@
 <li *ngFor="let i of listCurrency.rates" >
-    {{i.sumToConvert}}  {{i.fromCoint}} = {{i.resultConvert}}  {{i.toCoint}}
+    {{i.sumToConvert | round}}  {{i.fromCoint}} = {{i.resultConvert | round}}  {{i.toCoint}}
  </li>

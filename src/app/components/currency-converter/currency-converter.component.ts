@@ -10,18 +10,18 @@ import { ConvertibleDataService } from 'src/app/Servies/convertible-data.service
 export class CurrencyConverterComponent implements OnInit {
 
   constructor(public listCurrency: ConvertibleDataService) { }
-  numToConvert: number = this.listCurrency.rates[this.listCurrency.rates.length-1].sumToConvert;
-  result: number = this.listCurrency.rates[this.listCurrency.rates.length-1].resultConvert;
-  CoinFrom: string = this.listCurrency.rates[this.listCurrency.rates.length-1].fromCoint;
-  CoinTo: string = this.listCurrency.rates[this.listCurrency.rates.length-1].toCoint;
+  numToConvert: number = this.listCurrency.rates[this.listCurrency.rates.length - 1].sumToConvert;
+  result: number = this.listCurrency.rates[this.listCurrency.rates.length - 1].resultConvert;
+  CoinFrom: string = this.listCurrency.rates[this.listCurrency.rates.length - 1].fromCoint;
+  CoinTo: string = this.listCurrency.rates[this.listCurrency.rates.length - 1].toCoint;
   arrayCoins: any;
   listCoins: any = {};
-  ratesElement: Coins = {
-    fromCoint: '',
-    sumToConvert: 0,
-    toCoint: '',
-    resultConvert: 0
-  };
+  // ratesElement: Coins = {
+  //   fromCoint: '',
+  //   sumToConvert: 0,
+  //   toCoint: '',
+  //   resultConvert: 0
+  // };
 
 
   // numConvert(numToCoins: number) {
@@ -39,15 +39,29 @@ export class CurrencyConverterComponent implements OnInit {
       }
     )
   }
-  resultOfConvert() {
+  converter() {
     this.result = (this.numToConvert) / (this.findCurrencyValue(this.CoinFrom)) * (this.findCurrencyValue(this.CoinTo));
-    this.ratesElement.fromCoint = this.CoinFrom;
-    this.ratesElement.resultConvert = this.result;
-    this.ratesElement.sumToConvert = this.numToConvert;
-    this.ratesElement.toCoint = this.CoinTo;
-    this.listCurrency.rates.push(this.ratesElement)
+    
+    this.addToArray( this.CoinFrom,this.result,this.numToConvert,this.CoinTo);
     //אני צריכה ליצור שמירה חזקה כדי שהנתונים לא ישתנו בפעם הבאה שיכנס
   }
+  addToArray(CoinFrom:string,result:number,numToConvert:number,CoinTo:string) {
+    var ratesElement: Coins = 
+    {
+      fromCoint: CoinFrom,
+      sumToConvert: numToConvert,
+      toCoint: CoinTo,
+      resultConvert: result
+    };
+    // this.ratesElement.fromCoint = CoinFrom;
+    // this.ratesElement.resultConvert = result;
+    // this.ratesElement.sumToConvert = numToConvert;
+    // this.ratesElement.toCoint = CoinTo;
+    this.listCurrency.rates.push(ratesElement)
+    for (let i in this.listCurrency.rates)
+      console.log(this.listCurrency.rates[i].fromCoint);
+  }
+
   findCurrencyValue(coin: string) {
     for (let coins in this.arrayCoins) {
       if (this.arrayCoins[coins][0] == coin) {

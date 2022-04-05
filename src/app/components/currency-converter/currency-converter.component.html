@@ -1,13 +1,13 @@
 <div class="currecy-converter">
     <h1>Currency Converter</h1>
-    <input [(ngModel)]="numToConvert" (ngModelChange)="resultOfConvert()" class="sumConvert" type="number">
+    <input [(ngModel)]="numToConvert" (ngModelChange)="converter()" class="sumConvert" type="number">
     <label class="sumConvert">From:</label>
-    <select [(ngModel)]="CoinFrom" (ngModelChange)="resultOfConvert()" name="demo" id="#">
+    <select [(ngModel)]="CoinFrom" (ngModelChange)="converter()" name="demo" id="#">
         <option *ngFor="let coins of arrayCoins" value={{coins[0]}}>{{coins[0]}}</option>
         <!-- <option selected="selected" value="one">Option 1</option> -->
     </select>
     <label>To:</label>
-    <select [(ngModel)]="CoinTo" (ngModelChange)="resultOfConvert()" name="demo" id="#">
+    <select [(ngModel)]="CoinTo" (ngModelChange)="converter()" name="demo" id="#">
         <option selected="selected" *ngFor="let coins of arrayCoins" value={{coins[0]}}>{{coins[0]}}</option>
         <!-- <option selected="selected" value="one">Option 1</option>
         <option value="two">Option 2</option>
